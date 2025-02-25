@@ -27,7 +27,3 @@ func (r *ExpensePostgres) Create(userId int, input expensetracker.Expense) (int,
 
 	return id, nil
 }
-
-func (r *ExpensePostgres) GetAll(userId int) ([]expensetracker.Expense, error) {
-
-}
