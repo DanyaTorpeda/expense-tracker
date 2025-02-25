@@ -23,10 +23,10 @@ func (c ExpenseCategory) Validate() bool {
 }
 
 type Expense struct {
-	ID          int
-	UserID      int
-	Total       float64
-	Description string
-	Category    ExpenseCategory
-	CreatedAt   time.Time
+	ID          int             `json:"id" db:"id"`
+	UserID      int             `json:"user_id" db:"user_id"`
+	Total       float64         `json:"total" db:"total"`
+	Description string          `json:"description" db:"description"`
+	Category    ExpenseCategory `json:"category" db:"category"`
+	CreatedAt   time.Time       `json:"created_at" db:"created_at"`
 }

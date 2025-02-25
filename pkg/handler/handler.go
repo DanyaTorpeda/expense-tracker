@@ -23,5 +23,14 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		auth.POST("/sign-in", h.signIn)
 	}
 
+	api := routes.Group("/api", h.userIdentity)
+	{
+		expenses := api.Group("/expenses")
+		{
+			expenses.POST("/", h.createExpense)
+			expenses.GET("/", h.getAllExpenses)
+		}
+	}
+
 	return routes
 }

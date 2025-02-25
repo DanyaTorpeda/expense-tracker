@@ -11,12 +11,19 @@ type Authorization interface {
 	GetUser(username string) (*expensetracker.User, error)
 }
 
+type Expense interface {
+	Create(userId int, input expensetracker.Expense) (int, error)
+	GetAll(userId int) ([]expensetracker.Expense, error)
+}
+
 type Repository struct {
 	Authorization
+	Expense
 }
 
 func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
 		Authorization: NewAuthPostgres(db),
+		Expense:       NewExpensePostgres(db),
 	}
 }

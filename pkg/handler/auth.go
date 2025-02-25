@@ -37,5 +37,11 @@ func (h *Handler) signIn(c *gin.Context) {
 		return
 	}
 
-	h.service.Authorization.GenerateToken()
+	token, err := h.service.Authorization.GenerateToken(id)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"token": token})
 }
