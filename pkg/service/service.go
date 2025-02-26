@@ -14,7 +14,10 @@ type Authorization interface {
 
 type Expense interface {
 	Create(userId int, input expensetracker.Expense) (int, error)
-	GetAll(userId int) ([]expensetracker.Expense, error)
+	GetAll(userId int, sortBy string, order string) ([]expensetracker.Expense, error)
+	GetById(userId int, expenseId int) (*expensetracker.Expense, error)
+	Update(userId int, expenseId int, input expensetracker.Expense) error
+	Delete(userId int, expenseId int) error
 }
 
 type Service struct {

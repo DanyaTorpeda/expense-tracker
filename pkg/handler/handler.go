@@ -29,6 +29,9 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		{
 			expenses.POST("/", h.createExpense)
 			expenses.GET("/", h.getAllExpenses)
+			expenses.GET("/:id", h.getById)
+			expenses.PUT("/:id", h.updateExpense)
+			expenses.DELETE("/:id", h.deleteExpense)
 		}
 	}
 

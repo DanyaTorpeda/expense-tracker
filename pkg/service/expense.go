@@ -21,6 +21,18 @@ func (s *ExpenseService) Create(userId int, input expensetracker.Expense) (int, 
 	return s.repo.Create(userId, input)
 }
 
-func (s *ExpenseService) GetAll(userId int) ([]expensetracker.Expense, error) {
-	return s.repo.GetAll(userId)
+func (s *ExpenseService) GetAll(userId int, sortBy string, order string) ([]expensetracker.Expense, error) {
+	return s.repo.GetAll(userId, sortBy, order)
+}
+
+func (s *ExpenseService) GetById(userId int, expenseId int) (*expensetracker.Expense, error) {
+	return s.repo.GetById(userId, expenseId)
+}
+
+func (s *ExpenseService) Update(userId int, expenseId int, input expensetracker.Expense) error {
+	return s.repo.Update(userId, expenseId, input)
+}
+
+func (s *ExpenseService) Delete(userId int, expenseId int) error {
+	return s.repo.Delete(userId, expenseId)
 }
